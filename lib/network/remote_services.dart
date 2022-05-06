@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:contact_scan/model/event_list_model.dart';
-import 'package:contact_scan/utils/app_constants.dart';
 import 'package:http/http.dart' as http;
+import 'package:watch_center/utils/app_constants.dart';
+
+import '../model/event_list_model.dart';
 
 class RemoteServices {
   static var client = http.Client();

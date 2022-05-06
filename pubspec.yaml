@@ -1,7 +1,8 @@
-name: contact_scan
+name: watch_center
 description: A new Flutter project.
 
 publish_to: 'none'
+
 
 version: 1.0.0+1
 
@@ -21,7 +22,6 @@ dependencies:
   dropdown_button2: ^1.0.7
   flutter_svg: ^1.0.0
   intl: ^0.17.0
-  mobile_scanner:
 
 dev_dependencies:
   flutter_test:
@@ -36,11 +36,7 @@ flutter:
   assets:
     - assets/images/
   fonts:
-    - family: HelveticaNeue
+    - family: Helvetica Neue
       fonts:
-        - asset: assets/font/HelveticaNeue-Light.ttf
-          weight: 300
-        - asset: assets/font/HelveticaNeue-Medium.ttf
-          weight: 500
-        - asset: assets/font/HelveticaNeue-Bold.ttf
-          weight: 700
+        - asset: assets/font/helvetica_neue.ttf
+

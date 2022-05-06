@@ -1,9 +1,9 @@
-import 'package:contact_scan/ui/components/app_bar_controller.dart';
-import 'package:contact_scan/route/app_pages.dart';
-import 'package:contact_scan/utils/color_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:watch_center/controller/app_bar_controlelr.dart';
+import 'package:watch_center/route/app_pages.dart';
+import 'package:watch_center/utils/color_constants.dart';
 
 class AppBarSimple extends StatelessWidget implements PreferredSizeWidget {
   AppBarSimple({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class AppBarSimple extends StatelessWidget implements PreferredSizeWidget {
         children: [
           GestureDetector(
             onTap: () async {
-              await _appBarController.getSavedData();
+             await _appBarController. getSavedData();
               if (_appBarController.showInstruction) {
                 Get.offAndToNamed(Routes.home);
               } else {
@@ -32,7 +32,7 @@ class AppBarSimple extends StatelessWidget implements PreferredSizeWidget {
             },
             child: const Icon(
               CupertinoIcons.clear,
-              color: AppColors.grayB5,
+              color: ColorConstants.grayB5,
               size: 35,
             ),
           ),

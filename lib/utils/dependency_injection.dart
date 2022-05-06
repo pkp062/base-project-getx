@@ -1,5 +1,5 @@
-import 'package:contact_scan/utils/storage_service.dart';
 import 'package:get/get.dart';
+import 'package:watch_center/utils/storage_service.dart';
 
 class DependencyInjection {
   static Future<void> init() async {

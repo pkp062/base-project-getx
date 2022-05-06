@@ -5,12 +5,13 @@ class ImagePath {
   static const String checkInImage = 'assets/images/ic_checked_in.svg';
   static const String checkOutImage = 'assets/images/ic_checked_out.svg';
   static const String appName = 'assets/images/ic_app_name.png';
+  static const String launchSquid = 'assets/images/logo_launchsquid.png';
   static const String eventSquidLogo = 'assets/images/logo_eventsquid.png';
   static const String eventSquidLogoNoTag =
       'assets/images/logo_eventsquid_no_tag.png';
   static const String splashLogo = 'assets/images/logo_splash.png';
-  static const String splashBadge = 'assets/images/ic_id_badge.svg';
-  static const String splashQR = 'assets/images/ic_metro_qrcode.svg';
+  static const String splashQR = 'assets/images/splashQR.svg';
+  static const String inreach = 'assets/images/logo_inreach.png';
   static const String unChecked = 'assets/images/ic_uncheck.png';
   static const String unCheckedSvg = 'assets/images/ic_uncheck.svg';
   static const String toolbarQR = 'assets/images/ic_metro_qrcode.svg';

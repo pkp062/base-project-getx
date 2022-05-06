@@ -1,6 +1,7 @@
-import 'package:contact_scan/utils/app_dimensions.dart';
-import 'package:contact_scan/utils/color_constants.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_center/utils/color_constants.dart';
+import 'package:watch_center/utils/dimensions.dart';
 
 class RoundedButton extends StatelessWidget {
   String buttonName;
@@ -14,16 +15,19 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
-      width: screenWidth,
-      height: screenHeight / 20,
+      width: Dimensions.screenWidth,
+      height: Dimensions.screenHeight / 20,
       decoration: BoxDecoration(
           color: this.color,
           borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Center(
           child: Text(
         this.buttonName.toUpperCase(),
-        style: TextStyle(fontSize: screenHeight / 50, color: AppColors.white),
+        style: TextStyle(
+            fontSize: Dimensions.screenHeight / 50,
+            color: ColorConstants.white),
       )),
-    ));
+    )
+    );
   }
 }
