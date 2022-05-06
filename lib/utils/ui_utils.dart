@@ -1,7 +1,7 @@
+import 'package:contact_scan/utils/app_dimensions.dart';
+import 'package:contact_scan/utils/color_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:watch_center/utils/color_constants.dart';
-import 'package:watch_center/utils/dimensions.dart';
 
 class UiUtils {
   Widget gapWidget({double? height = 0, double? width = 0}) {
@@ -13,7 +13,7 @@ class UiUtils {
 
   Widget loadingWidget() {
     return CircularProgressIndicator(
-      valueColor: new AlwaysStoppedAnimation<Color>(ColorConstants.blue11),
+      valueColor: new AlwaysStoppedAnimation<Color>(AppColors.blue11),
     );
   }
 
@@ -39,7 +39,7 @@ class UiUtils {
               child: Text(
             buttonText ?? "N/A",
             style: TextStyle(
-                fontSize: Dimensions.screenWidth / 18,
+                fontSize: screenWidth / 18,
                 fontWeight: FontWeight.w500,
                 color: buttonTextColor,
                 decoration: TextDecoration.none),
@@ -68,7 +68,7 @@ class UiUtils {
         child: Text(buttonText ?? "N/A",
             style: TextStyle(
                 color: buttonTextColor,
-                fontSize: Dimensions.screenWidth / 22,
+                fontSize: screenWidth / 22,
                 letterSpacing: 0.25,
                 fontWeight: FontWeight.w500,
                 decoration: isLinkText == false
@@ -88,7 +88,7 @@ class UiUtils {
 
   Widget dividerWidget() {
     return Divider(
-      color: ColorConstants.black44,
+      color: AppColors.black44,
       thickness: 1.0,
     );
   }

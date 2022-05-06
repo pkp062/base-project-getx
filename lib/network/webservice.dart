@@ -1,7 +1,7 @@
+import 'package:contact_scan/utils/utility.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:watch_center/utils/utility.dart';
 
 class Resource<T> {
   final String? url;
@@ -40,8 +40,7 @@ class Webservice {
   Future<T> loadGetWithHeader<T>(Resource<T> resource) async {
     String token = await Utility.getUserAPIKey();
     Map<String, String> headers = {"Authorization": token};
-    final response =
-    await http.get(Uri.parse(resource.url!), headers: headers);
+    final response = await http.get(Uri.parse(resource.url!), headers: headers);
     if (kDebugMode) {
       print("response........................." + response.toString());
     }

@@ -1,7 +1,8 @@
+import 'package:contact_scan/ui/screens/auth/event_auth.dart';
+import 'package:contact_scan/ui/screens/eventChange/event_change_dialog_screen.dart';
+import 'package:contact_scan/ui/screens/scanScreen/scan_screen.dart';
+import 'package:contact_scan/ui/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
-import 'package:watch_center/ui/screens/event_auth.dart';
-import 'package:watch_center/ui/screens/splash_screen.dart';
-
 
 part 'app_routes.dart';
 
@@ -16,11 +17,14 @@ class AppPages {
     GetPage(
         name: Routes.auth,
         page: () => EventAuth(),
-        transition: Transition.downToUp
-        /*children: [
-        GetPage(name: Routes.REGISTER, page: () => RegisterScreen()),
-        GetPage(name: Routes.LOGIN, page: () => LoginScreen()),
-      ],*/
-        ),
+        transition: Transition.downToUp),
+    GetPage(
+        name: Routes.home,
+        page: () => ScanScreen(),
+        transition: Transition.downToUp),
+    GetPage(
+        name: Routes.changeEventDialog,
+        page: () => EventChangeDialogScreen(),
+        transition: Transition.downToUp),
   ];
 }

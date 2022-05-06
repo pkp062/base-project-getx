@@ -1,13 +1,15 @@
 import 'dart:async';
 
+import 'package:contact_scan/route/app_pages.dart';
+import 'package:contact_scan/utils/app_constants.dart';
+import 'package:contact_scan/utils/app_fonts.dart';
+import 'package:contact_scan/utils/color_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:watch_center/route/app_pages.dart';
-import 'package:watch_center/utils/app_constants.dart';
-import 'package:watch_center/utils/color_constants.dart';
-import 'package:watch_center/utils/dependency_injection.dart';
+
+import 'utils/dependency_injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,8 +26,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: "Helvetica Neue",
-        primarySwatch: ColorConstants.appColor,
+        fontFamily: AppFonts.helveticaNeue,
+        primarySwatch: AppColors.appColor,
       ),
       initialRoute: Routes.splash,
       getPages: AppPages.routes,

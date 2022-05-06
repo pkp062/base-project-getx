@@ -20,7 +20,7 @@ class StorageService extends GetxService {
 
   Future<void> clearEventCred() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.remove(AppConstants.eventAuthID);
+    preferences.remove(AppConstants.eventConfNumber);
     preferences.remove(AppConstants.eventAuthPassword);
   }
 

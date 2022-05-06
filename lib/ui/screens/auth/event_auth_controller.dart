@@ -1,33 +1,32 @@
 import 'dart:convert';
 
-
+import 'package:contact_scan/model/event_auth_model.dart';
+import 'package:contact_scan/model/event_list_model.dart';
+import 'package:contact_scan/network/remote_services.dart';
+import 'package:contact_scan/network/webservice.dart';
+import 'package:contact_scan/route/app_pages.dart';
+import 'package:contact_scan/utils/app_constants.dart';
+import 'package:contact_scan/utils/utility.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:watch_center/model/event_auth_model.dart';
-import 'package:watch_center/model/event_list_model.dart';
-import 'package:watch_center/network/remote_services.dart';
-import 'package:watch_center/network/webservice.dart';
-import 'package:watch_center/route/app_pages.dart';
-import 'package:watch_center/utils/app_constants.dart';
-import 'package:watch_center/utils/utility.dart';
 
-import 'base_controller.dart';
+import '../../components/base_controller.dart';
 
 class EventAuthController extends BaseController {
   final formKey = GlobalKey<FormState>();
   var hostNameList = [].obs;
   List<EventListModel> modelList = <EventListModel>[].obs;
   late EventAuthModel eventAuthModel;
-  late TextEditingController eventIdController;
+  late TextEditingController confNumberController;
   late TextEditingController authCodeController;
   var dropDownValue = "".obs;
   var isFromDrawer = "";
   late BuildContext context;
   var _storeEventData;
-  var _eventID = "";
+  var _confNumber = "";
   var _authCode = "";
   var _dropdownValue = "";
 
@@ -42,15 +41,15 @@ class EventAuthController extends BaseController {
       }
     });
     getSavedData();
-    eventIdController = TextEditingController();
+    confNumberController = TextEditingController();
     authCodeController = TextEditingController();
     eventAuthModel = EventAuthModel();
     isFromDrawer = Get.parameters['isFromDrawer'].toString();
     if (isFromDrawer == "true") {
-      eventIdController.text = _eventID;
+      confNumberController.text = _confNumber;
       authCodeController.text = _authCode;
     } else {
-      eventIdController.text = "";
+      confNumberController.text = "";
       authCodeController.text = "";
     }
     super.onInit();
@@ -61,7 +60,7 @@ class EventAuthController extends BaseController {
     Get.focusScope!.unfocus();
 
     if (isValid) {
-      fetchAuthoriseApi();
+      Get.offAndToNamed(Routes.home);
     }
   }
 
@@ -89,7 +88,7 @@ class EventAuthController extends BaseController {
   fetchAuthoriseApi() async {
     isLoading(true);
     final queryParameter = {
-      "eventID": eventIdController.value.text.toString(),
+      "eventID": confNumberController.value.text.toString(),
       "authCode": authCodeController.value.text.toString()
     };
     final jsonString = json.encode(queryParameter);
@@ -135,8 +134,8 @@ class EventAuthController extends BaseController {
   saveInPref() async {
     var date = DateTime.now();
     debugPrint('---------------------' + date.toIso8601String());
-      await _storeEventData.setString(
-          AppConstants.currentTime, date.toIso8601String());
+    await _storeEventData.setString(
+        AppConstants.currentTime, date.toIso8601String());
 
     await _storeEventData.setString(
         AppConstants.apiKey, eventAuthModel.apiKey.toString());
@@ -144,8 +143,8 @@ class EventAuthController extends BaseController {
     String modelString = jsonEncode(eventAuthModel);
     await _storeEventData.setString(AppConstants.eventAuthData, modelString);
 
-    await _storeEventData.setString(
-        AppConstants.eventAuthID, eventIdController.value.text.toString());
+    await _storeEventData.setString(AppConstants.eventConfNumber,
+        confNumberController.value.text.toString());
 
     await _storeEventData.setString(AppConstants.eventAuthPassword,
         authCodeController.value.text.toString());
@@ -157,14 +156,15 @@ class EventAuthController extends BaseController {
   }
 
   getSavedData() async {
-    if (_storeEventData.getString(AppConstants.eventAuthID) != null &&
+    if (_storeEventData.getString(AppConstants.eventConfNumber) != null &&
         _storeEventData.getString(AppConstants.eventAuthPassword) != null) {
-      _eventID = await _storeEventData.getString(AppConstants.eventAuthID);
+      _confNumber =
+          await _storeEventData.getString(AppConstants.eventConfNumber);
       _authCode =
           await _storeEventData.getString(AppConstants.eventAuthPassword);
       _dropdownValue =
           await _storeEventData.getString(AppConstants.dropdownValue);
-      eventIdController.text = _eventID;
+      confNumberController.text = _confNumber;
       authCodeController.text = _authCode;
       dropDownValue.value = _dropdownValue;
     }

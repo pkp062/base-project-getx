@@ -1,17 +1,17 @@
+import 'package:contact_scan/ui/components/app_bar_simple.dart';
+import 'package:contact_scan/ui/components/text_field.dart';
+import 'package:contact_scan/ui/screens/auth/event_auth_controller.dart';
+import 'package:contact_scan/utils/app_constants.dart';
+import 'package:contact_scan/utils/app_dimensions.dart';
+import 'package:contact_scan/utils/color_constants.dart';
+import 'package:contact_scan/utils/utility.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:watch_center/controller/event_auth_controller.dart';
-import 'package:watch_center/route/app_pages.dart';
-import 'package:watch_center/ui/components/app_bar_simple.dart';
-import 'package:watch_center/ui/components/rounded_button.dart';
-import 'package:watch_center/ui/components/text_field.dart';
-import 'package:watch_center/utils/app_constants.dart';
-import 'package:watch_center/utils/color_constants.dart';
-import 'package:watch_center/utils/dimensions.dart';
-import 'package:watch_center/utils/utility.dart';
+
+import '../../../route/app_pages.dart';
+import '../../components/rounded_button.dart';
 
 class EventAuth extends StatelessWidget {
   EventAuth({Key? key}) : super(key: key);
@@ -21,6 +21,8 @@ class EventAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
     return Obx(
       () {
         return Stack(
@@ -46,14 +48,14 @@ class EventAuth extends StatelessWidget {
                                 : SizedBox(
                                     height: 10,
                                   ),
-                             Padding(
+                            Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 28, vertical: 14),
                               child: Text(
                                 AppConstants.selectEventHost,
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color: ColorConstants.black53,
+                                    color: AppColors.black53,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -62,10 +64,10 @@ class EventAuth extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 24.0),
                               child: _eventAuthController.isFromDrawer == "true"
                                   ? Container(
-                                      width: Dimensions.screenWidth,
-                                      height: Dimensions.screenHeight / 20,
+                                      width: screenWidth,
+                                      height: screenHeight / 20,
                                       decoration: const BoxDecoration(
-                                          color: ColorConstants.gray949599,
+                                          color: AppColors.gray949599,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8))),
                                       child: Padding(
@@ -79,17 +81,14 @@ class EventAuth extends StatelessWidget {
                                               _eventAuthController
                                                   .dropDownValue.value,
                                               style: TextStyle(
-                                                  fontSize:
-                                                      Dimensions.screenHeight /
-                                                          50,
-                                                  color: ColorConstants.white,
+                                                  fontSize: screenHeight / 50,
+                                                  color: AppColors.white,
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Icon(
                                               Icons.arrow_drop_down,
-                                              color: ColorConstants.white,
-                                              size:
-                                                  Dimensions.screenHeight / 25,
+                                              color: AppColors.white,
+                                              size: screenHeight / 25,
                                             ),
                                           ],
                                         ),
@@ -100,7 +99,7 @@ class EventAuth extends StatelessWidget {
                                       ? Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
-                                              color: ColorConstants.gray949599,
+                                              color: AppColors.gray949599,
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(8))),
                                           child: Listener(
@@ -112,10 +111,8 @@ class EventAuth extends StatelessWidget {
                                                 isExpanded: true,
                                                 icon: Icon(
                                                   Icons.arrow_drop_down,
-                                                  color: ColorConstants.white,
-                                                  size:
-                                                      Dimensions.screenHeight /
-                                                          18,
+                                                  color: AppColors.white,
+                                                  size: screenHeight / 18,
                                                 ),
                                                 value: _eventAuthController
                                                             .dropDownValue
@@ -172,12 +169,11 @@ class EventAuth extends StatelessWidget {
                                                           Text(
                                                             value,
                                                             style: TextStyle(
-                                                                fontSize: Dimensions
-                                                                        .screenHeight /
-                                                                    50,
-                                                                color:
-                                                                    ColorConstants
-                                                                        .black,
+                                                                fontSize:
+                                                                    screenHeight /
+                                                                        50,
+                                                                color: AppColors
+                                                                    .black,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w400),
@@ -207,10 +203,10 @@ class EventAuth extends StatelessWidget {
                               padding: EdgeInsets.only(
                                   left: 28, right: 28, top: 28, bottom: 8),
                               child: Text(
-                                AppConstants.eventIdentification,
+                                AppConstants.registrationConformation,
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: ColorConstants.black53,
+                                    color: AppColors.black53,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -223,11 +219,11 @@ class EventAuth extends StatelessWidget {
                                     AppConstants.eventIdDesc,
                                     style: TextStyle(
                                         fontSize: 15,
-                                        color: ColorConstants.gray949599,
+                                        color: AppColors.gray949599,
                                         fontWeight: FontWeight.w400),
                                   ),
                                   SizedBox(
-                                    height: Dimensions.screenWidth / 22,
+                                    height: screenWidth / 22,
                                   ),
                                   TextFieldWidget(
                                     inputFormatters: [
@@ -242,12 +238,12 @@ class EventAuth extends StatelessWidget {
                                             : true,
                                     inputType: TextInputType.text,
                                     controller:
-                                        _eventAuthController.eventIdController,
+                                        _eventAuthController.confNumberController,
                                     isObscureText: false,
-                                    hintText: AppConstants.eventIdHint,
+                                    hintText: AppConstants.confirmationNumber,
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return AppConstants.emptyValueEventId;
+                                        return AppConstants.emptyValueConfNumber;
                                       }
                                       return null;
                                     },
@@ -280,7 +276,7 @@ class EventAuth extends StatelessWidget {
                                     },
                                   ),
                                   SizedBox(
-                                    height: Dimensions.screenWidth / 4,
+                                    height: screenWidth / 4,
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -294,11 +290,11 @@ class EventAuth extends StatelessWidget {
                                     child: _eventAuthController.isFromDrawer ==
                                             "true"
                                         ? RoundedButton(
-                                            color: ColorConstants.red,
+                                            color: AppColors.red,
                                             buttonName:
                                                 AppConstants.changeEvent)
                                         : RoundedButton(
-                                            color: ColorConstants.black44,
+                                            color: AppColors.black44,
                                             buttonName: AppConstants.authorize),
                                   )
                                 ],

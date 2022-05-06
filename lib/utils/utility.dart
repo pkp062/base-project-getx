@@ -1,18 +1,17 @@
 import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
-
+import 'package:contact_scan/route/app_pages.dart';
+import 'package:contact_scan/utils/app_dimensions.dart';
+import 'package:contact_scan/utils/storage_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:watch_center/route/app_pages.dart';
-import 'package:watch_center/utils/storage_service.dart';
 
 import 'app_constants.dart';
 import 'color_constants.dart';
-import 'dimensions.dart';
 
 class Utility {
   static Future<bool> isConnected() async {
@@ -49,53 +48,52 @@ class Utility {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-
   static Widget buildProgressIndicator() {
     return Container(
-      height: Dimensions.screenHeight,
-      color: ColorConstants.black.withOpacity(0.4),
+      height: screenHeight,
+      color: AppColors.black.withOpacity(0.4),
       child: Center(
         child: CircularProgressIndicator(
-          backgroundColor: ColorConstants.blue,
-          valueColor: new AlwaysStoppedAnimation<Color>(ColorConstants.white),
+          backgroundColor: AppColors.blue,
+          valueColor: new AlwaysStoppedAnimation<Color>(AppColors.white),
         ),
       ),
     );
   }
 
-  static void getSessionExpiredDialog(){
+  static void getSessionExpiredDialog() {
     Platform.isAndroid
         ? Get.dialog(
-      AlertDialog(
-        title: Text(AppConstants.sessionExpired),
-        actions: [
-          TextButton(
-            child: Text(AppConstants.ok),
-            onPressed: () {
-              Get.back();
-              StorageService().clearAllData();
-              Get.offNamedUntil(Routes.auth, (route) => false);
-            },
-          ),
-        ],
-      ),
-      barrierDismissible: false,
-    )
-        : Get.dialog(
-      CupertinoAlertDialog(
-        title: Text(AppConstants.sessionExpired),
-        actions: [
-          CupertinoDialogAction(
-            child: Text(AppConstants.ok),
-            onPressed: () {
-              Get.back();
-              StorageService().clearAllData();
-              Get.offNamedUntil(Routes.auth, (route) => false);
-            },
+            AlertDialog(
+              title: Text(AppConstants.sessionExpired),
+              actions: [
+                TextButton(
+                  child: Text(AppConstants.ok),
+                  onPressed: () {
+                    Get.back();
+                    StorageService().clearAllData();
+                    Get.offNamedUntil(Routes.auth, (route) => false);
+                  },
+                ),
+              ],
+            ),
+            barrierDismissible: false,
           )
-        ],
-      ),
-      barrierDismissible: false,
-    );
+        : Get.dialog(
+            CupertinoAlertDialog(
+              title: Text(AppConstants.sessionExpired),
+              actions: [
+                CupertinoDialogAction(
+                  child: Text(AppConstants.ok),
+                  onPressed: () {
+                    Get.back();
+                    StorageService().clearAllData();
+                    Get.offNamedUntil(Routes.auth, (route) => false);
+                  },
+                )
+              ],
+            ),
+            barrierDismissible: false,
+          );
   }
 }

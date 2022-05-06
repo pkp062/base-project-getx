@@ -1,7 +1,6 @@
-
+import 'package:contact_scan/utils/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:watch_center/utils/color_constants.dart';
 
 class TextFieldWidget extends StatelessWidget {
   TextFieldWidget(
@@ -46,30 +45,30 @@ class TextFieldWidget extends StatelessWidget {
       obscureText: isObscureText!,
       enabled: enabled,
       style: TextStyle(
-        color: ColorConstants.black,
+        color: AppColors.black,
         fontSize: 16,
       ),
       keyboardType: inputType,
       decoration: InputDecoration(
         filled: true,
-        fillColor: ColorConstants.white,
+        fillColor: AppColors.white,
         suffixIcon: passwordButton,
         labelText: labelText,
         contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: ColorConstants.gray70, width: 2)),
+            borderSide: BorderSide(color: AppColors.gray70, width: 2)),
         hintText: hintText,
         errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: ColorConstants.red, width: 2)),
-        hintStyle: TextStyle(color: ColorConstants.grayA5),
+            borderSide: BorderSide(color: AppColors.red, width: 2)),
+        hintStyle: TextStyle(color: AppColors.grayA5),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: ColorConstants.gray70, width: 2)),
+            borderSide: BorderSide(color: AppColors.gray70, width: 2)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: ColorConstants.gray70, width: 2)),
+            borderSide: BorderSide(color: AppColors.gray70, width: 2)),
       ),
     );
   }
