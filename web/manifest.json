@@ -1,6 +1,6 @@
 {
-    "name": "watch_center",
-    "short_name": "watch_center",
+    "name": "eventsquid.quickscan",
+    "short_name": "eventsquid.quickscan",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.watch_center">
+    package="com.eventsquid.quickscan">
    <application
-        android:label="watch_center"
+        android:label="eventsquid"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

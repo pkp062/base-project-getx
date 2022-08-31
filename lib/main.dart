@@ -4,10 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:watch_center/route/app_pages.dart';
-import 'package:watch_center/utils/app_constants.dart';
-import 'package:watch_center/utils/color_constants.dart';
-import 'package:watch_center/utils/dependency_injection.dart';
+
+import 'app/routes/app_pages.dart';
+import 'app/style/color_constants.dart';
+import 'app/utils/app_constants.dart';
+import 'app/utils/dependency_injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Helvetica Neue",
         primarySwatch: ColorConstants.appColor,
       ),
-      initialRoute: Routes.splash,
+      initialRoute: Routes.SPLASH,
       getPages: AppPages.routes,
       title: AppConstants.appName,
     );

@@ -1,4 +1,4 @@
-# watch_center
+# eventsquid.quickscan
 
 A new Flutter project.
 
